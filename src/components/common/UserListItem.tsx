@@ -1,10 +1,11 @@
 import React from "react";
 import Avatar from "./Avatar";
 import { User } from '../../interface';
-import {BadgeInfo, TableData} from "../index";
+import { BadgeInfo, TableData } from "../index";
 import { FormattedDate } from "react-intl";
 import tw from "twin.macro";
-import {TOTAL_CREDITS} from "../../constants/defaultValues";
+import { TOTAL_CREDITS } from "../../constants/defaultValues";
+import { useRouter } from "next/router";
 
 interface UserListItemProps {
  user: User;
@@ -17,8 +18,14 @@ const TableRow = tw.tr`
 
 /* list item for a user */
 const UserListItem: React.FC<UserListItemProps> = ({ user }) => {
+    const router = useRouter();
+
     const handleUserClick = () => {
-        console.log('user ===>', user);
+        const pathname = `/${user.username}/credits`
+
+        router.push({
+            pathname,
+        });
     }
 
     return (
@@ -27,14 +34,9 @@ const UserListItem: React.FC<UserListItemProps> = ({ user }) => {
             <TableData>{user.name}</TableData>
             <TableData>{user.username}</TableData>
             {/* user credits */}
-            {user.credits &&
-            <TableData><BadgeInfo>{user.credits} / {TOTAL_CREDITS} </BadgeInfo>
-            </TableData>
-            }
+            {user.credits && <TableData><BadgeInfo>{user.credits} / {TOTAL_CREDITS} </BadgeInfo></TableData>}
             {/* date joined*/}
-            {  user.dateJoined &&
-                <TableData><FormattedDate value={user.dateJoined} year="numeric" month="long" day="2-digit"/></TableData>
-            }
+            {user.dateJoined && <TableData><FormattedDate value={user.dateJoined} year="numeric" month="long" day="2-digit"/></TableData>}
         </TableRow>
     )
 };
