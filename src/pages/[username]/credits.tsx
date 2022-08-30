@@ -1,10 +1,10 @@
 import { NextPage } from "next";
 import { useRouter } from "next/router";
-import { Container, Card, ProgressBar } from "../../components";
-import { CardBody, CardTitle} from "../../components/card";
+import { Container, Card, ProgressBar, Button } from "../../components";
+import { CardBody, CardTitle } from "../../components/card";
 import tw from "twin.macro";
 import Head from "next/head";
-import React from "react";
+import React, { useMemo } from "react";
 import useUser from "../../hooks/useUser";
 import {
     PROFILES_TOTAL_CREDITS,
@@ -12,6 +12,7 @@ import {
     USERS_TOTAL_CREDITS
 } from "../../constants/defaultValues";
 import { getCreditsPercentage } from "../../utils/helpers";
+import { User } from "../../interface";
 
 
 const Credits: NextPage = () => {
@@ -20,10 +21,19 @@ const Credits: NextPage = () => {
 
     const { data, loading } = useUser({ username });
 
+
+    const user = useMemo(() => {
+        if (loading){
+            return {} as User;
+        }
+
+        return  data;
+    }, [loading, data]);
+
+
     if (loading) {
         return <h4>Loading...</h4>
     }
-
 
     return (
         <React.Fragment>
@@ -38,9 +48,9 @@ const Credits: NextPage = () => {
                         <React.Fragment>
                             <div tw="mt-5"/>
                             <ProgressBar
-                                width={getCreditsPercentage(data?.credits?.profiles, PROFILES_TOTAL_CREDITS)}
+                                width={getCreditsPercentage(user?.credits?.profiles, PROFILES_TOTAL_CREDITS)}
                                 title="Profiles"
-                                credits={data?.credits?.profiles}
+                                credits={user?.credits?.profiles}
                                 totalCredits={PROFILES_TOTAL_CREDITS}/>
                         </React.Fragment>
 
@@ -48,9 +58,9 @@ const Credits: NextPage = () => {
                         <React.Fragment>
                             <div tw="mt-8"/>
                             <ProgressBar
-                                width={getCreditsPercentage(data?.credits?.searches, SEARCHES_TOTAL_CREDITS)}
+                                width={getCreditsPercentage(user?.credits?.searches, SEARCHES_TOTAL_CREDITS)}
                                 title="Searches"
-                                credits={data?.credits?.searches}
+                                credits={user?.credits?.searches}
                                 totalCredits={SEARCHES_TOTAL_CREDITS}/>
                         </React.Fragment>
 
@@ -58,14 +68,20 @@ const Credits: NextPage = () => {
                         <React.Fragment>
                             <div tw="mt-8 mb-2"/>
                             <ProgressBar
-                                width={getCreditsPercentage(data?.credits?.users, USERS_TOTAL_CREDITS)}
+                                width={getCreditsPercentage(user?.credits?.users, USERS_TOTAL_CREDITS)}
                                 title="Users"
-                                credits={data?.credits?.users}
+                                credits={user?.credits?.users}
                                 totalCredits={USERS_TOTAL_CREDITS}/>
                         </React.Fragment>
 
                     </CardBody>
                 </Card>
+                {/* buttons */}
+                <div tw="flex flex-col justify-center mt-1">
+                    <Button tw="mt-5">Open Profile (-1 credit)</Button>
+                    <Button tw="mt-3" variant='light'>Search KOLS (-1 credit)</Button>
+                    <Button tw="mt-3" variant='light'>Add User (-1 credit)</Button>
+                </div>
             </Container>}
         </React.Fragment>
     )
