@@ -4,7 +4,7 @@ import tw from "twin.macro";
 
 
 const Layout = styled.div(()=>[
-    tw` border-4 container mx-auto my-10 w-80
+    tw` container mx-auto my-10 w-80
         md:container md:mx-auto
         p-4 h-auto
     `,
