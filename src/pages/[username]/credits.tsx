@@ -1,5 +1,6 @@
 import { NextPage } from "next";
 import { useRouter } from "next/router";
+import { Container } from "../../components";
 
 
 const Credits: NextPage = () => {
@@ -7,7 +8,9 @@ const Credits: NextPage = () => {
     const { user} = router.query
 
     return (
-        <>slug: {user}</>
+        <Container>
+            {user}
+        </Container>
     )
 }
 
