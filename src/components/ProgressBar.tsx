@@ -25,7 +25,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ width, title, credits, totalC
         <React.Fragment>
             { ( title || totalCredits ) &&
                 <div tw="flex flex-row justify-between pb-2">
-                    {title && <h6 tw="font-semibold text-black">Profiles</h6>}
+                    {title && <h6 tw="font-semibold text-black">{title}</h6>}
                     {credits && totalCredits && <BadgeInfo>{ credits } / { totalCredits}</BadgeInfo>}
                 </div>
             }
