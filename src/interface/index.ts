@@ -7,5 +7,5 @@ export type User = {
     credits: number;
     avatarUrl: string;
     dateJoined: Date;
-    updatedAt: Date;
+    updatedAt?: Date;
 }
