@@ -25,4 +25,19 @@ const getUsers = async (): Promise<User[]> => {
     return getMinifiedRecords(userRecords) as User[];
 }
 
-export { table, base, getUsers }
+
+/*
+* filters the user table records by username
+* NB: The username field is unique
+* */
+const filterRecordsByUsername = async (username: string) => {
+    const record = await table
+        .select({
+            filterByFormula: `username="${username}"`,
+        })
+        .firstPage();
+
+    return getMinifiedRecords(record);
+};
+
+export { table, base, getUsers, filterRecordsByUsername }
