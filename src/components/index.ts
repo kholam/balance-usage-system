@@ -1,7 +1,9 @@
 import GlobalStyles from "./GlobalStyles";
-import Container from "container/index"
+import Container from "./common/Container";
+import Card from "./card/Card";
 
 export {
     GlobalStyles,
     Container,
+    Card
 }
