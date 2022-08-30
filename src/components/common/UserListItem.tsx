@@ -4,7 +4,6 @@ import { User } from '../../interface';
 import { BadgeInfo, TableData } from "../index";
 import { FormattedDate } from "react-intl";
 import tw from "twin.macro";
-import { TOTAL_CREDITS } from "../../constants/defaultValues";
 import { useRouter } from "next/router";
 
 interface UserListItemProps {
