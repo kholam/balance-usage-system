@@ -32,7 +32,7 @@ const Home: NextPage<HomeProps> = ({ users}) => {
                             <TableHeader>Avatar</TableHeader>
                             <TableHeader>Name</TableHeader>
                             <TableHeader>Username</TableHeader>
-                            <TableHeader>Credits</TableHeader>
+                            <TableHeader>Total Credits</TableHeader>
                             <TableHeader>Date Joined</TableHeader>
                         </tr>
                         </thead>

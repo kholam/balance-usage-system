@@ -1,11 +1,18 @@
 import { Record, Records } from "airtable";
+import { Credits, User } from "../interface";
 
 /*
-* returns only the fields for a table
+* returns only fields for the table and and transform it into a user type
 * */
-const getMinifiedRecord = (record: Record<any>) => {
+const getMinifiedRecord = (record: Record<any>): User => {
+
     return {
         id: record.id,
+        credits: {
+            users: record.get('usersCredits') | 0,
+            profiles: record.get('profileCredits') | 0,
+            searches: record.get('searchCredits') | 0,
+        } as Credits,
         ...record.fields,
     };
 };

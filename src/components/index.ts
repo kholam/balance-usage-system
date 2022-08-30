@@ -4,6 +4,7 @@ import Card from "./card/Card";
 import tw from "twin.macro";
 import Avatar from "./common/Avatar";
 import  { BadgeInfo } from "./common/Badge";
+import ProgressBar from "./ProgressBar";
 
 const TableHeader = tw.th`
     px-3 py-2 text-xs font-medium
@@ -23,4 +24,5 @@ export {
     TableData,
     Avatar,
     BadgeInfo,
+    ProgressBar,
 }

@@ -28,13 +28,18 @@ const UserListItem: React.FC<UserListItemProps> = ({ user }) => {
         });
     }
 
+    const totalCredits = () => {
+        const { users, searches, profiles } = user.credits;
+        return profiles + searches  + users;
+    }
+
     return (
         <TableRow onClick={handleUserClick}>
             {user.avatarUrl && <TableData><Avatar avatarUrl={user.avatarUrl}/></TableData>}
             <TableData>{user.name}</TableData>
             <TableData>{user.username}</TableData>
             {/* user credits */}
-            {user.credits && <TableData><BadgeInfo>{user.credits} / {TOTAL_CREDITS} </BadgeInfo></TableData>}
+            {user.credits && <TableData><BadgeInfo>{totalCredits()} </BadgeInfo></TableData>}
             {/* date joined*/}
             {user.dateJoined && <TableData><FormattedDate value={user.dateJoined} year="numeric" month="long" day="2-digit"/></TableData>}
         </TableRow>
