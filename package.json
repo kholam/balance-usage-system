@@ -14,11 +14,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/react-intl": "^3.0.0",
     "@types/styled-components": "^5.1.26",
     "airtable": "^0.11.4",
     "next": "12.2.5",
-    "react": "18.2.0",
+    "react": "^18.2.0",
     "react-dom": "18.2.0",
+    "react-intl": "^6.1.0",
     "styled-components": "^5.3.5"
   },
   "devDependencies": {
