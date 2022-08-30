@@ -39,7 +39,7 @@ class MyDocument extends Document {
             <Html lang="en">
             <Head>
                 <link rel="preload" href="/fonts/Candara-Regular.ttf" as="font" crossOrigin="anonymous"/>
-                <link rel="preload" href="/fonts/IBMPlexSans-Regular.ttf" as="font" crossOrigin="anonymous"/>
+                <link rel="preload" href="/fonts/Candara-Bold.ttf" as="font" crossOrigin="anonymous"/>
             </Head>
             <body>
             {/** Firefox hack for avoiding FOUC */}

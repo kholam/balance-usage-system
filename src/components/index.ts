@@ -2,6 +2,7 @@ import GlobalStyles from "./GlobalStyles";
 import Container from "./common/Container";
 import Card from "./card/Card";
 import tw from "twin.macro";
+import Avatar from "./common/Avatar";
 
 const TableHeader = tw.th`
     px-3 py-2 text-xs font-medium
@@ -19,4 +20,5 @@ export {
     Card,
     TableHeader,
     TableData,
+    Avatar,
 }
