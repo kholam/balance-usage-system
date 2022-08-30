@@ -1,4 +1,5 @@
 
+/* contains all color schemes for the project */
 const COLORS = {
     SNOW: '#F9FAFB',
     WHITE: "#FFFFFF",
