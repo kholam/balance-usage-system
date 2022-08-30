@@ -1,6 +1,6 @@
 import Airtable from "airtable";
 import {User} from "../interface";
-import { getMinifiedRecords } from "../utils/helpers";
+import { getMinifiedRecords, getMinifiedRecord } from "../utils/helpers";
 // authenticate and configure Airtable API
 Airtable.configure({
     apiKey: process.env.NEXT_PUBLIC_AIRTABLE_API_KEY
@@ -37,7 +37,7 @@ const filterRecordsByUsername = async (username: string) => {
         })
         .firstPage();
 
-    return getMinifiedRecords(record);
+    return getMinifiedRecord(record[0]);
 };
 
 export { table, base, getUsers, filterRecordsByUsername }
