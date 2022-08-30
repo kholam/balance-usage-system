@@ -1,20 +1,31 @@
 import React from "react";
 import type { NextPage } from 'next';
-import Button from "../components/Button";
+import { getUsers } from "../lib/airtable";
+import { User } from "../interface";
 
-const Home: NextPage = () => {
+interface HomeProps {
+    users: User[];
+}
 
-    const handleButtonClick = () =>{
-        console.log('handle click button')
-    }
+const Home: NextPage<HomeProps> = ({ users}) => {
+    console.log('users', users);
+
 
   return (
     <React.Fragment>
-        <Button variant='primary' onClick={handleButtonClick}>
-            Secondary
-        </Button>
     </React.Fragment>
   )
+}
+
+export async function getStaticProps() {
+    const users: User[] = await getUsers() || [];
+
+    return {
+        /* page the data to the component as props */
+        props: {
+            users: users,
+        },
+    };
 }
 
 export default Home
