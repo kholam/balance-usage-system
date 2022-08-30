@@ -1,3 +1,5 @@
 
 
-export const TOTAL_CREDITS = 50;
+export const PROFILES_TOTAL_CREDITS = 50;
+export const SEARCHES_TOTAL_CREDITS = 150;
+export const USES_TOTAL_CREDITS = 3;
