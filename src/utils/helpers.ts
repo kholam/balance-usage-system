@@ -2,7 +2,7 @@ import { Record, Records } from "airtable";
 import { Credits, User } from "../interface";
 
 /*
-* returns only fields for the table and and transform it into a user type
+* returns only fields for the table  and transform it into a user type
 * */
 const getMinifiedRecord = (record: Record<any>): User => {
 
@@ -23,9 +23,22 @@ const getMinifiedRecords = (records: Records<any>) => {
 };
 
 
+/*
+* computes the percentage value for each credit used rounded to the closest whole nunber
+* credits -> number of user credits remaining
+* totalCredits -> default credits used in the system
+* */
+const getCreditsPercentage = (credits: number, totalCredits: number) => {
+
+    const creditsPercenet = (credits / totalCredits) * 100;
+
+    return Math.round(creditsPercenet) || 0;
+}
+
 export {
     getMinifiedRecord,
     getMinifiedRecords,
+    getCreditsPercentage,
 }
 
 /* polyfill helper function for fetching data */
