@@ -187,7 +187,7 @@ const Credits: NextPage = () => {
                      onClick={()=>handleUpdateBalance(UpdateBalanceActionType.OPEN_PROFILE)}>
                     <Card style={{ ...cardStyling }} isDisabled={state.profiles === 0}>
                         <p>
-                            Card(-1 credit)
+                            Card (-1 credit)
                         </p>
                     </Card>
                 </div>
