@@ -11,6 +11,7 @@ import {User} from "../../interface";
 import {updateUserBalanceReducer} from "./redux/reducer";
 import {initialState, UpdateBalanceActionType} from "./redux/state";
 import tw from "twin.macro";
+import { toast } from "react-toastify";
 
 
 const cardStyling = {
@@ -50,18 +51,28 @@ const Credits: NextPage = () => {
 
     }, [data, loading])
 
+    /* display toast notification */
+    const notify = (message: string) => toast(message, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+    })
 
     /* updates user credits based on the button clicked */
     const handleUpdateBalance = useCallback(async (type: UpdateBalanceActionType) =>{
 
         if (type === UpdateBalanceActionType.ADD_USER && state.users === 0){
-            alert('Add user balance exhausted');
+            notify('Add User exhausted');
             return;
         } else if (type === UpdateBalanceActionType.OPEN_PROFILE && state.profiles === 0){
-            alert('Open profile balance exhausted');
+            notify('Open profile balance exhausted');
             return;
         } else if (type === UpdateBalanceActionType.SEARCH_KOLS && state.searches === 0){
-            alert('Search KOLS balance exhausted');
+            notify('Search KOLS balance exhausted');
             return;
         }
 

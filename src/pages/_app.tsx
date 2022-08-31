@@ -2,6 +2,8 @@ import React from "react";
 import type { AppProps } from 'next/app'
 import { GlobalStyles } from "../components";
 import { IntlProvider } from 'react-intl'
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
@@ -9,6 +11,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         <React.Fragment>
           <GlobalStyles/>
           <Component {...pageProps} />
+            <ToastContainer/>
         </React.Fragment>
       </IntlProvider>
   )
