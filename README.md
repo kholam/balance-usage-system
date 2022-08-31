@@ -1,7 +1,29 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
+For a quick setup that will get you up and running locally on your computer:
 
+Clone the repository
+```
+git clone https://github.com/DataSciGeek/balance-usage-system
+```
+
+You need to configure the evironment variables. 
+Visit [Airtable](https://www.airtable.com/) and create a project to generate the API keys required 
+to run the application. Let the name of the table be `users`
+
+Run the following command assuming you have already configured your Airtable API's.
+##### Unix based systems:
+```
+cp .env.template .env.local
+```
+##### Window computers:
+```
+copy .env.template .env.local
+```
+Update the values in the template with your Airtable API keys
+
+# To run the application
 First, run the development server:
 
 ```bash
