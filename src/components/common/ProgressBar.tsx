@@ -1,6 +1,6 @@
 import React from "react";
 import tw from "twin.macro";
-import {BadgeInfo} from "./common/Badge";
+import { BadgeInfo } from "./Badge";
 
 interface ProgressBarProps {
     width: number;
