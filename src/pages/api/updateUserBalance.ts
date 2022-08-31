@@ -1,7 +1,7 @@
 import { getMinifiedRecord } from "../../utils/helpers";
 import { table } from '../../lib';
 import { NextApiRequest, NextApiResponse } from 'next';
-import {UpdateBalanceActionType} from "../[username]/redux/state";
+import { UpdateBalanceActionType } from "../../redux/state";
 
 // fields required for updating a record
 type fields = {

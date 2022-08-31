@@ -1,15 +1,15 @@
-import {NextPage} from "next";
-import {useRouter} from "next/router";
-import {Button, Card, Container, ProgressBar} from "../../components";
-import {CardBody, CardTitle} from "../../components/card";
+import { NextPage } from "next";
+import { useRouter } from "next/router";
+import { Button, Card, Container, ProgressBar } from "../../components";
+import { CardBody, CardTitle } from "../../components/card";
 import Head from "next/head";
-import React, {useCallback, useMemo, useReducer} from "react";
+import React, { useCallback, useMemo, useReducer } from "react";
 import useUser from "../../hooks/useUser";
 import {PROFILES_TOTAL_CREDITS, SEARCHES_TOTAL_CREDITS, USERS_TOTAL_CREDITS} from "../../constants/defaultValues";
-import {getCreditsPercentage, getResponseBody, userBalancePayLoadInfo} from "../../utils/helpers";
-import {User} from "../../interface";
-import {updateUserBalanceReducer} from "./redux/reducer";
-import {initialState, UpdateBalanceActionType} from "./redux/state";
+import { getCreditsPercentage, getResponseBody, userBalancePayLoadInfo } from "../../utils/helpers";
+import { User } from "../../interface";
+import { updateUserBalanceReducer } from "../../redux/reducer";
+import {initialState, UpdateBalanceActionType} from "../../redux/state";
 import tw from "twin.macro";
 import { toast } from "react-toastify";
 

@@ -1,5 +1,5 @@
 // actions for the reducer
-import {Credits} from "../../../interface";
+import {Credits} from "../interface";
 import { UpdateBalanceActionType } from "./state";
 
 // actions for the reducer

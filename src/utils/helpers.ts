@@ -1,6 +1,6 @@
 import { Record, Records } from "airtable";
 import { Credits, User } from "../interface";
-import { UpdateBalanceActionType } from "../pages/[username]/redux/state";
+import { UpdateBalanceActionType } from "../redux/state";
 
 /*
 * returns only fields for the table  and transform it into a user type

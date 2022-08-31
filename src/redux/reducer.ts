@@ -1,4 +1,4 @@
-import { Credits } from "../../../interface";
+import { Credits } from "../interface";
 import { UpdateBalanceAction } from "./action";
 import { UpdateBalanceActionType } from "./state";
 

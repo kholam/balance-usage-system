@@ -1,6 +1,6 @@
 
 /* action type for button clicks */
-import { Credits } from "../../../interface";
+import { Credits } from "../interface";
 
 export enum UpdateBalanceActionType  {
     OPEN_PROFILE =  'OPEN_PROFILE',
