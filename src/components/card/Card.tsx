@@ -1,19 +1,34 @@
 import React from "react";
-import tw from "twin.macro";
+import tw, { styled, css } from "twin.macro";
 import { ReactNodeProps } from "./index";
 
+interface containerProps {
+    style?: Record<string, string>;
+    isDisabled?: boolean;
+}
 
-const Container = tw.div`
-        flex justify-center
+
+const Container = styled.div(({ style, isDisabled } : containerProps )=>[
+    tw`flex justify-center
         block p-6 rounded-lg shadow-lg bg-white
-        w-auto
-`
+        w-auto`,
 
+    isDisabled && tw`cursor-not-allowed opacity-60`,
 
-const Card: React.FC<ReactNodeProps>= ({children}) => {
+    css`
+        ${style};
+    `
+])
+
+interface CardProps extends ReactNodeProps {
+    style?: Record<string, string>;
+    isDisabled?: boolean;
+}
+
+const Card: React.FC<CardProps>= ({children, isDisabled, style}) => {
 
     return (
-        <Container>
+        <Container style={style} isDisabled={isDisabled}>
             {children}
         </Container>
     )

@@ -8,6 +8,7 @@ type Size = | 'sm' | 'lg';
 interface ButtonProps {
     variant?: Variant // optional
     size?: Size; // optional
+    isDisabled?: boolean; // optional
 }
 
 /*
@@ -15,7 +16,7 @@ interface ButtonProps {
 * Default button size is sm
 * Default variant type is primary
 * */
-const Button = styled.button(({ size = 'sm', variant = 'primary' } : ButtonProps) => [
+const Button = styled.button(({ size = 'sm', variant = 'primary', isDisabled } : ButtonProps) => [
     /* default styling for all buttons */
     tw`px-6 py-2.5 rounded shadow-md
        inline-block font-medium leading-tight
@@ -32,6 +33,8 @@ const Button = styled.button(({ size = 'sm', variant = 'primary' } : ButtonProps
     size === 'sm' && tw`text-sm`,
 
     size === 'lg' && tw`text-lg`,
+
+    isDisabled && tw`cursor-not-allowed opacity-60`
 ])
 
 export default Button
