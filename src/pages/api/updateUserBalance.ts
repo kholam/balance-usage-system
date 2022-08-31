@@ -1,7 +1,7 @@
 import { getMinifiedRecord } from "../../utils/helpers";
 import { table } from '../../lib';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { updateBalanceType } from "../[username]/credits";
+import {UpdateBalanceActionType} from "../[username]/redux/state";
 
 // fields required for updating a record
 type fields = {
@@ -20,11 +20,11 @@ const updateUserBalance = async (req: NextApiRequest, res: NextApiResponse) => {
         const fields = {} as fields;
 
         /* checks field type to use for updating the balance  */
-        if (type === updateBalanceType.OPEN_PROFILE) {
+        if (type === UpdateBalanceActionType.OPEN_PROFILE) {
             fields.profileCredits = balance;
-        } else if (type === updateBalanceType.SEARCH_KOLS) {
+        } else if (type === UpdateBalanceActionType.SEARCH_KOLS) {
             fields.searchCredits = balance;
-        } else if (type === updateBalanceType.ADD_USER) {
+        } else if (type === UpdateBalanceActionType.ADD_USER) {
             fields.usersCredits = balance;
         }
 
