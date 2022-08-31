@@ -1,6 +1,6 @@
 import { Record, Records } from "airtable";
 import { Credits, User } from "../interface";
-import { updateBalanceType } from "../pages/[username]/credits";
+import { UpdateBalanceActionType } from "../pages/[username]/redux/state";
 
 /*
 * returns only fields for the table  and transform it into a user type
@@ -42,27 +42,54 @@ const getCreditsPercentage = (credits: number, totalCredits: number) => {
 * @params -> userBalance: current balance of the user
 * */
 
-const getResponseBody = async (type: updateBalanceType, userId: string, userBalance: Credits) => {
-    const responseBody = {} as { id: string, balance: number, type: updateBalanceType };
+const getResponseBody = async (type: UpdateBalanceActionType, userId: string, state: Credits) => {
+    const responseBody = {} as { id: string, balance: number, type: UpdateBalanceActionType };
     responseBody.id = userId;
 
 
-    if (type === updateBalanceType.OPEN_PROFILE){
-        // not checking if balance is 0 before deducting
-        // because the button will be disabled when the balance is 0
-        responseBody.balance = userBalance.profiles - 1;
+    if (type === UpdateBalanceActionType.OPEN_PROFILE){
+        responseBody.balance = state.profiles - 1;
         responseBody.type = type;
 
-    } else if (type === updateBalanceType.SEARCH_KOLS){
-        responseBody.balance = userBalance.searches - 1;
+    } else if (type === UpdateBalanceActionType.SEARCH_KOLS){
+        responseBody.balance = state.searches - 1;
         responseBody.type = type;
 
-    } else  if (type === updateBalanceType.ADD_USER){
-        responseBody.balance = userBalance.users - 1;
+    } else  if (type === UpdateBalanceActionType.ADD_USER){
+        responseBody.balance = state.users - 1;
         responseBody.type = type;
     }
 
     return responseBody;
+}
+
+/* returns payload info for a specific type
+* @params -> type: update balance action type
+* @params -> credits: current balance of user
+* */
+export const userBalancePayLoadInfo = (type: UpdateBalanceActionType, state: Credits) => {
+    let payloadInfo = { ...state };
+
+    if (type === UpdateBalanceActionType.OPEN_PROFILE){
+        payloadInfo = {
+            ...payloadInfo,
+            profiles: state.profiles
+        }
+
+    } else if (type === UpdateBalanceActionType.SEARCH_KOLS){
+        payloadInfo = {
+            ...payloadInfo,
+            searches: state.searches
+        }
+
+    } else  if (type === UpdateBalanceActionType.ADD_USER){
+        payloadInfo = {
+            ...payloadInfo,
+            users: state.users,
+        }
+    }
+
+    return payloadInfo;
 }
 
 export {
